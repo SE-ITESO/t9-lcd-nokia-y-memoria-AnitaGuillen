@@ -27,6 +27,22 @@
 
 
 
+#include "LCD_nokia.h"
+#include "LCD_nokia_images.h"
+#include "SPI.h"
+
+/*! This array hold the initial picture that is shown in the LCD. Note that extern should be avoided*/
+extern const uint8_t ITESO[504];
+
+const uint8_t IMAGE_1[504] = {0};
+
+const uint8_t IMAGE_2[504] = {0};
+
+const uint8_t IMAGE_3[504] = {0};
+
+const uint8_t IMAGE_4[504] = {0};
+
+const uint8_t IMAGE_5[504] = {0};
 
 uint8_t g_three_scnds = 0;
 
@@ -89,21 +105,38 @@ int main(void)
 		{
 		case 0:
 			//imagen iteso
+			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_bitmap(ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
 			break;
 		case 1:
 			//Imagen 2
+			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_bitmap(IMAGE_1); /*! It prints an array that hold an image, in this case is the initial picture*/
+
 			break;
 		case 2:
 			//Imagen 3
+			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_bitmap(IMAGE_2); /*! It prints an array that hold an image, in this case is the initial picture*/
+
 			break;
 		case 3:
 			//Imagen 4
+			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_bitmap(IMAGE_3); /*! It prints an array that hold an image, in this case is the initial picture*/
+
 			break;
 		case 4:
 			//Imagen 5
+			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_bitmap(IMAGE_4); /*! It prints an array that hold an image, in this case is the initial picture*/
+
 			break;
 		case 5:
 			//Imagen 6
+			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_bitmap(IMAGE_5); /*! It prints an array that hold an image, in this case is the initial picture*/
+
 			break;
 		default:
 			image = 0;
