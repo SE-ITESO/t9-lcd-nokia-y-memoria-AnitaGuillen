@@ -16,6 +16,15 @@
 #include "PIT_WITH_SDK.h"
 #include "GPIO_WITH_SDK.h"
 
+const uint8_t IMAGE_1[504] = {0};
+
+const uint8_t IMAGE_2[504] = {0};
+
+const uint8_t IMAGE_3[504] = {0};
+
+const uint8_t IMAGE_4[504] = {0};
+
+const uint8_t IMAGE_5[504] = {0};
 
 uint8_t g_three_scnds = 0;
 
