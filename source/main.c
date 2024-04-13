@@ -1,49 +1,29 @@
-/*
- * Copyright 2016-2024 NXP
- * All rights reserved.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
 
-/**
- * @file    Tarea_9.c
- * @brief   Application entry point.
- */
-#include <stdio.h>
-#include "board.h"
-#include "peripherals.h"
-#include "pin_mux.h"
-#include "clock_config.h"
-#include "MK64F12.h"
-#include "fsl_debug_console.h"
-/* TODO: insert other include files here. */
+#define SPI_MEMORY_TEST
+#define NOKIA_IMAGE_SIZE 504U
 
-/* TODO: insert other definitions and declarations here. */
+#define IMAGEN1		0x40000U
+#define IMAGEN2		0x41000U
+#define IMAGEN3		0x42000U
+#define IMAGEN4		0x43000U
+#define IMAGEN5		0x44000U
 
-/*
- * @brief   Application entry point.
- */
-int main(void) {
+#include "S25FL164K.h"
 
-    /* Init board hardware. */
-    BOARD_InitBootPins();
-    BOARD_InitBootClocks();
-    BOARD_InitBootPeripherals();
-#ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
-    /* Init FSL debug console. */
-    BOARD_InitDebugConsole();
+
+int main(void)
+{
+
+#ifdef SPI_MEMORY_TEST
+	uint32_t address = IMAGEN1;
+	uint8_t readData[NOKIA_IMAGE_SIZE] = {0};
+	s25fl_init();
+	s25fl_read_data(address, readData, NOKIA_IMAGE_SIZE);
 #endif
 
-    PRINTF("Hello World\r\n");
+	for(;;)
+	{
 
-    /* Force the counter to be placed into memory. */
-    volatile static int i = 0 ;
-    /* Enter an infinite loop, just incrementing a counter. */
-    while(1) {
-        i++ ;
-        /* 'Dummy' NOP to allow source level single stepping of
-            tight while() loop */
-        __asm volatile ("nop");
-    }
-    return 0 ;
+	}
+	return 0 ;
 }
