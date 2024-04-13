@@ -59,14 +59,41 @@ int main(void)
 	GPIO_PinInit(GPIOD, 0, &output_config);
 	g_three_scnds = 0;
 	PIT_StartTimer (PIT, kPIT_Chnl_0);
+	uint8_t image = 0;
 	for(;;)
 	{
 
 		if (1 == g_three_scnds)
 		{
 			GPIO_PortToggle(GPIOD, 1);
+			image++;
 			g_three_scnds = 0;
 		}
+		switch(image)
+		{
+		case 0:
+			//imagen iteso
+			break;
+		case 1:
+			//Imagen 2
+			break;
+		case 2:
+			//Imagen 3
+			break;
+		case 3:
+			//Imagen 4
+			break;
+		case 4:
+			//Imagen 5
+			break;
+		case 5:
+			//Imagen 6
+			break;
+		default:
+			image = 0;
+			break;
+		}
+
 	}
 	return 0;
 }
