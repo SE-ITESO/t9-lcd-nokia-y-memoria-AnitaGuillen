@@ -19,6 +19,7 @@
 
 #define NOKIA_IMAGE_SIZE 504U
 
+/** Memory **/
 #define IMAGE_1_ADDR		0x40000U
 #define IMAGE_2_ADDR		0x41000U
 #define IMAGE_3_ADDR		0x42000U
