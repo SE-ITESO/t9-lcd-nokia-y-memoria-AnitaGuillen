@@ -15,6 +15,17 @@
 #include "NVIC.h"
 #include "PIT_WITH_SDK.h"
 #include "GPIO_WITH_SDK.h"
+#include "S25FL164K.h"
+
+#define NOKIA_IMAGE_SIZE 504U
+
+#define IMAGEN1		0x40000U
+#define IMAGEN2		0x41000U
+#define IMAGEN3		0x42000U
+#define IMAGEN4		0x43000U
+#define IMAGEN5		0x44000U
+
+
 
 
 uint8_t g_three_scnds = 0;
@@ -36,6 +47,7 @@ void NVIC_init(void)
 
 int main(void)
 {
+
 	CLOCK_SetSimSafeDivs();
 	/**Initialize the PIT timers needed**/
 	pit_init_module();
@@ -49,10 +61,14 @@ int main(void)
 	NVIC_global_enable_interrupts;
 
 	gpio_pin_config_t output_config = {
-			        kGPIO_DigitalOutput,
-			        0,
+			kGPIO_DigitalOutput,
+			0,
 	};
 
+	uint32_t address = IMAGEN1;
+	uint8_t readData[NOKIA_IMAGE_SIZE] = {0};
+	s25fl_init();
+	s25fl_read_data(address, readData, NOKIA_IMAGE_SIZE);
 
 	CLOCK_EnableClock(kCLOCK_PortD);
 	PORT_SetPinMux(PORTD, 0, kPORT_MuxAsGpio);
