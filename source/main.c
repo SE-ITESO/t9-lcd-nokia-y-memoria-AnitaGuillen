@@ -19,15 +19,17 @@
 
 #define NOKIA_IMAGE_SIZE 504U
 
-/** Memory **/
+/** Memory addresses in which the images are stored**/
 #define IMAGE_1_ADDR		0x40000U
 #define IMAGE_2_ADDR		0x41000U
 #define IMAGE_3_ADDR		0x42000U
 #define IMAGE_4_ADDR		0x43000U
 #define IMAGE_5_ADDR		0x44000U
 
+/** Total amount of images **/
 #define IMAGES_QUANTITY    6
 
+/** 3 seconds to shoe the image **/
 #define PIT_VALUE_3_SECONDS 31500000
 
 #include "LCD_nokia.h"
@@ -37,6 +39,7 @@
 /*! This array hold the initial picture that is shown in the LCD. Note that extern should be avoided*/
 extern const uint8_t ITESO[NOKIA_IMAGE_SIZE];
 
+/** Arrays to store the memory images**/
 uint8_t IMAGE_1[NOKIA_IMAGE_SIZE] = {0};
 
 uint8_t IMAGE_2[NOKIA_IMAGE_SIZE] = {0};
@@ -49,11 +52,13 @@ uint8_t IMAGE_5[NOKIA_IMAGE_SIZE] = {0};
 
 static uint8_t g_three_scnds = 0;
 
+/** Function to modify the flag value to show a new image **/
 void flag_three_scnds()
 {
 	g_three_scnds = 1;
 }
 
+/** NVIC function to set interruptions**/
 void NVIC_init(void)
 {
 	/**Sets the threshold for interrupts, if the interrupt has higher priority constant
@@ -64,6 +69,14 @@ void NVIC_init(void)
 	NVIC_enable_interrupt_and_priotity(PIT_CH0_IRQ, PRIORITY_1);
 }
 
+/*!
+ * @brief Main code: controls the image flow.
+ * 1. Sets an array for the image address and the image arrays
+ * 2. Initialize PIT and Memory
+ * 3. Stores the images from memory into the image arrays
+ * 4. Initialize SPI module for display and the nokia display
+ * 5. Rotates the image in display each 3 seconds
+ */
 int main(void)
 {
 	uint8_t image = 0;
