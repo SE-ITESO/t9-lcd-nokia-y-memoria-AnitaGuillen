@@ -1,9 +1,12 @@
-/*
- * S25FL164K.h
- *
- *  Created on: 12 abr. 2024
- *      Author: prome
- */
+/** @file S25FL164K.h
+*
+* @brief S25FL164K module driver for the K64 Sub-Family of MCUs
+* that uses the SDK's drivers for SPI communication with the
+* memory module.
+*
+* @par
+* Patricio Coz Puig. Apr, 12, 2024
+*/
 
 #ifndef S25FL164K_H_
 #define S25FL164K_H_
