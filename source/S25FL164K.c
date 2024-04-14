@@ -61,8 +61,8 @@ void s25fl_init()
 	masterConfig.ctarConfig.cpha                          = kDSPI_ClockPhaseSecondEdge;
 	masterConfig.ctarConfig.direction                     = kDSPI_MsbFirst;
 	masterConfig.ctarConfig.pcsToSckDelayInNanoSec        = 0U;
-	masterConfig.ctarConfig.lastSckToPcsDelayInNanoSec    = 1000000000U;
-	masterConfig.ctarConfig.betweenTransferDelayInNanoSec = 0U;
+	masterConfig.ctarConfig.lastSckToPcsDelayInNanoSec    = 0U;
+	masterConfig.ctarConfig.betweenTransferDelayInNanoSec = 1000000000U;
 
 	masterConfig.whichPcs           = kDSPI_Pcs1;
 	masterConfig.pcsActiveHighOrLow = kDSPI_PcsActiveLow;
