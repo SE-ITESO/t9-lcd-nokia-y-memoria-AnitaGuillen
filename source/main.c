@@ -36,7 +36,8 @@
 #include "LCD_nokia_images.h"
 #include "SPI.h"
 
-/*! This array hold the initial picture that is shown in the LCD. Note that extern should be avoided*/
+/*! This array hold the initial picture that is shown in the LCD.
+ *  Note that extern should be avoided*/
 extern const uint8_t ITESO[NOKIA_IMAGE_SIZE];
 
 /** Arrays to store the memory images**/
@@ -61,7 +62,8 @@ void flag_three_scnds()
 /** NVIC function to set interruptions**/
 void NVIC_init(void)
 {
-	/**Sets the threshold for interrupts, if the interrupt has higher priority constant
+	/**Sets the threshold for interrupts, if the interrupt
+	 * has higher priority constant
 	 *  that the BASEPRI, the interrupt will not be attended **/
 	NVIC_set_basepri_threshold(PRIORITY_6);
 
@@ -131,32 +133,32 @@ int main(void)
 			{
 				image = 0;
 			}
-			LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+			LCD_nokia_clear(); /*! Clears the information printed in the LCD*/
 			switch(image)
 			{
 			case 0:
 				//Imagen iteso
-				LCD_nokia_bitmap(ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
+				LCD_nokia_bitmap(ITESO);
 				break;
 			case 1:
 				//Imagen 2
-				LCD_nokia_bitmap(IMAGE_1); /*! It prints an array that hold an image, in this case is the initial picture*/
+				LCD_nokia_bitmap(IMAGE_1);
 				break;
 			case 2:
 				//Imagen 3
-				LCD_nokia_bitmap(IMAGE_2); /*! It prints an array that hold an image, in this case is the initial picture*/
+				LCD_nokia_bitmap(IMAGE_2);
 				break;
 			case 3:
 				//Imagen 4
-				LCD_nokia_bitmap(IMAGE_3); /*! It prints an array that hold an image, in this case is the initial picture*/
+				LCD_nokia_bitmap(IMAGE_3);
 				break;
 			case 4:
 				//Imagen 5
-				LCD_nokia_bitmap(IMAGE_4); /*! It prints an array that hold an image, in this case is the initial picture*/
+				LCD_nokia_bitmap(IMAGE_4);
 				break;
 			case 5:
 				//Imagen 6
-				LCD_nokia_bitmap(IMAGE_5); /*! It prints an array that hold an image, in this case is the initial picture*/
+				LCD_nokia_bitmap(IMAGE_5);
 				break;
 			default:
 				image = 0;
